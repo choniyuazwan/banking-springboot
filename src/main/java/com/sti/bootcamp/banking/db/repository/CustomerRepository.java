@@ -1,7 +1,10 @@
 package com.sti.bootcamp.banking.db.repository;
 
 import com.sti.bootcamp.banking.db.model.CustomerEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface CustomerRepository extends JpaRepository<CustomerEntity, Integer> {
+import java.util.List;
+
+public interface CustomerRepository extends CrudRepository<CustomerEntity, Integer> {
+    List<CustomerEntity> findByUsernameAndPassword(String username, String password);
 }
