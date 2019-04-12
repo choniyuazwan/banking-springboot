@@ -16,12 +16,12 @@ public class AccountDaoImpl implements AccountDao {
     private EntityManager em;
 
     @Override
-    public List<AccountEntity> getList() {
+    public List<AccountEntity> getList(int cif) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery<AccountEntity> query = builder.createQuery(AccountEntity.class);
         Root<AccountEntity> root = query.from(AccountEntity.class);
 
-        query.select(root).where(builder.equal(root.get("customer").get("cif"), 4));
+        query.select(root).where(builder.equal(root.get("customer").get("cif"), cif));
 
         Query q = em.createQuery(query);
 

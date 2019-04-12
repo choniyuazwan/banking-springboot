@@ -52,7 +52,7 @@ public class AccountController {
     @GetMapping(value=URL_REQUEST_ACCOUNT_LIST)
     public CommonResponse<List<AccountEntity>> getAccountList(@RequestParam(name="cif", defaultValue="") String cif) {
         List<AccountEntity> list;
-        list = accountDao.getList();
+        list = accountDao.getList(Integer.parseInt(cif));
 
         CommonResponse<List<AccountEntity>> resp = new CommonResponse<>();
         resp.setData(list);

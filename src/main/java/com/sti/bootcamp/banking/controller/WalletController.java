@@ -52,7 +52,7 @@ public class WalletController {
     @GetMapping(value = URL_REQUEST_WALLET_LIST)
     public CommonResponse<List<WalletEntity>> getAccountList(@RequestParam(name = "cif", defaultValue = "") String cif) {
         List<WalletEntity> list;
-        list = walletDao.getList();
+        list = walletDao.getList(Integer.parseInt(cif));
 
         CommonResponse<List<WalletEntity>> resp = new CommonResponse<>();
         resp.setData(list);

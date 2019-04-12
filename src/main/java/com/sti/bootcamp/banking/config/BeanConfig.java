@@ -1,11 +1,7 @@
 package com.sti.bootcamp.banking.config;
 
-import com.sti.bootcamp.banking.db.dao.AccountDao;
-import com.sti.bootcamp.banking.db.dao.CustomerDao;
-import com.sti.bootcamp.banking.db.dao.WalletDao;
-import com.sti.bootcamp.banking.db.dao.impl.AccountDaoImpl;
-import com.sti.bootcamp.banking.db.dao.impl.CustomerDaoImpl;
-import com.sti.bootcamp.banking.db.dao.impl.WalletDaoImpl;
+import com.sti.bootcamp.banking.db.dao.*;
+import com.sti.bootcamp.banking.db.dao.impl.*;
 import org.springframework.context.annotation.Bean;
 
 public class BeanConfig {
@@ -23,5 +19,15 @@ public class BeanConfig {
     @Bean
     public WalletDao walletDao() {
         return new WalletDaoImpl();
+    }
+
+    @Bean
+    public WalletAccountDao walletAccountDao() {
+        return new WalletAccountDaoImpl();
+    }
+
+    @Bean
+    public TransactionDao transactionDao() {
+        return new TransactionDaoImpl();
     }
 }
