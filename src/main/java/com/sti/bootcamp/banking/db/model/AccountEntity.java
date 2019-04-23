@@ -15,7 +15,7 @@ public class AccountEntity {
     private Integer balance;
 
     @Column(name = "open_date")
-    private String open_date;
+    private String openDate;
 
     @ManyToOne
     @JoinColumn(name = "cif")
@@ -45,12 +45,12 @@ public class AccountEntity {
         this.balance = balance;
     }
 
-    public String getOpen_date() {
-        return open_date;
+    public String getOpenDate() {
+        return openDate;
     }
 
-    public void setOpen_date(String open_date) {
-        this.open_date = open_date;
+    public void setOpenDate(String openDate) {
+        this.openDate = openDate;
     }
 
     public CustomerEntity getCustomer() {

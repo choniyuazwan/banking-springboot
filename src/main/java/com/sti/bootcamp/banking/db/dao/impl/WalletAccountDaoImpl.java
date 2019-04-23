@@ -3,6 +3,7 @@ package com.sti.bootcamp.banking.db.dao.impl;
 import com.sti.bootcamp.banking.db.dao.WalletAccountDao;
 import com.sti.bootcamp.banking.db.model.WalletAccountEntity;
 import com.sti.bootcamp.banking.db.model.WalletAccountEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,6 +36,7 @@ public class WalletAccountDaoImpl implements WalletAccountDao {
     }
 
     @Override
+    @Transactional
     public WalletAccountEntity save(WalletAccountEntity walletAccount) {
         WalletAccountEntity saveWalletAccount = em.merge(walletAccount);
         return saveWalletAccount;

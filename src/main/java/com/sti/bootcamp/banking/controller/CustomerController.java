@@ -16,6 +16,7 @@ public class CustomerController {
     public static final String URL_REQUEST_CUSTOMER_LIST = "/customers";
     public static final String URL_REQUEST_CUSTOMER_BY_ID = "/customer/{id}";
     public static final String URL_REQUEST_CUSTOMER_BY_USERNAME_PASSWORD = "/customer/{username}/{password}";
+    public static final String URL_REQUEST_CUSTOMER_LOGIN= "/customer/login";
 
     @Autowired
     private CustomerDao customerDao;
@@ -35,19 +36,19 @@ public class CustomerController {
         return response;
     }
 
-    @GetMapping(value = URL_REQUEST_CUSTOMER_BY_USERNAME_PASSWORD)
-    public CommonResponse<List<CustomerEntity>> getCustomerEntity(@PathVariable(name = "username") String username, @PathVariable(name = "password") String password) throws CustomException {
-        List<CustomerEntity> customers;
-        customers = customerRepository.findByUsernameAndPassword(username, password);
-
-        if (customers.isEmpty() || customers == null) {
-            throw new CustomException("404", "Not Found");
-        }
-
-        CommonResponse<List<CustomerEntity>> response = new CommonResponse<>();
-        response.setData(customers);
-        return response;
-    }
+//    @GetMapping(value = URL_REQUEST_CUSTOMER_BY_USERNAME_PASSWORD)
+//    public CommonResponse<CustomerEntity> getCustomerEntity(@PathVariable(name = "username") String username, @PathVariable(name = "password") String password) throws CustomException {
+//        CustomerEntity customers;
+//        customers = customerRepository.findByUsernameAndPassword(username, password);
+//
+//        if ( customers == null) {
+//            throw new CustomException("404", "Not Found");
+//        }
+//
+//        CommonResponse<CustomerEntity> response = new CommonResponse<>();
+//        response.setData(customers);
+//        return response;
+//    }
 
 
     @GetMapping(value = URL_REQUEST_CUSTOMER_LIST)
@@ -68,6 +69,20 @@ public class CustomerController {
     public CommonResponse<CustomerEntity> createCustomerEntity(@RequestBody CustomerEntity customer) {
         CommonResponse<CustomerEntity> response = new CommonResponse<>();
         response.setData(customerRepository.save(customer));
+        return response;
+    }
+
+    @PostMapping(value = URL_REQUEST_CUSTOMER_LOGIN)
+    public CommonResponse<CustomerEntity> login(@RequestBody CustomerEntity customer) throws CustomException {
+        CustomerEntity customers;
+        customers = customerRepository.findByUsernameAndPassword(customer.getUsername(), customer.getPassword());
+
+        if (customers == null) {
+            throw new CustomException("404", "Not Found");
+        }
+
+        CommonResponse<CustomerEntity> response = new CommonResponse<CustomerEntity>();
+        response.setData(customers);
         return response;
     }
 }

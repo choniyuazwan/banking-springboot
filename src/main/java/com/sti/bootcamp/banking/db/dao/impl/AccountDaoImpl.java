@@ -2,6 +2,7 @@ package com.sti.bootcamp.banking.db.dao.impl;
 
 import com.sti.bootcamp.banking.db.dao.AccountDao;
 import com.sti.bootcamp.banking.db.model.AccountEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +35,7 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
+    @Transactional
     public AccountEntity save(AccountEntity account) {
         AccountEntity saveAccount = em.merge(account);
         return saveAccount;
