@@ -1,0 +1,13 @@
+{
+    "transactionType": {
+        "code": 1
+    },
+    "accountDebit": {
+        "accountNumber": 1
+    },
+    "amount": 10000,
+    "date": null,
+    "customer" : {
+        "cif": 1
+    }
+}

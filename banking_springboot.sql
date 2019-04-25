@@ -31,7 +31,7 @@ CREATE TABLE `account` (
   PRIMARY KEY (`account_number`),
   KEY `FKp7wsluclqtd5h7y824nnibjl8` (`cif`),
   CONSTRAINT `FKp7wsluclqtd5h7y824nnibjl8` FOREIGN KEY (`cif`) REFERENCES `customer` (`cif`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'akun 1',99500,NULL,1),(2,'akun 2',99500,NULL,1),(4,'akun 4',100000,NULL,1),(5,'gusti akun',300000,NULL,1),(7,'rek azwan 1',100000,NULL,4),(9,'gopay',50000,NULL,4),(10,'ovo',0,NULL,4),(11,'dana',50000,NULL,4),(12,'rek azwan 3',100000,NULL,4),(13,'rekening 1',10000,NULL,7),(14,'gopay',50000,NULL,7),(15,'ovo',70000,NULL,7),(21,'dialog',2323,NULL,NULL),(22,'',NULL,NULL,NULL),(23,'1212',2121,NULL,NULL),(24,'akun baru',100000,NULL,4),(25,'akun baru',100000,NULL,4),(26,'43453',5345,NULL,4),(27,'e323',34232,NULL,4),(28,'2222222',222222222,NULL,4),(29,'333',333333,NULL,4),(30,'44444',444444,NULL,4),(31,'5555555',555555555,NULL,4),(32,'66666',6666666,NULL,4),(33,'77777',7777777,NULL,4),(34,'88888',88888,NULL,4),(35,'9999',9999,NULL,4),(36,'888',8888,NULL,4),(37,'123',123,NULL,4),(38,'321',321,NULL,4);
+INSERT INTO `account` VALUES (1,'akun  no 1',109500,NULL,1),(2,'akun 2',99500,NULL,1),(4,'akun 4',90000,NULL,1),(7,'rek azwan 1',100000,NULL,4),(9,'gopay 9',NULL,NULL,NULL),(10,'ovo',0,NULL,4),(11,'dana',50000,NULL,4),(12,'rek azwan 3',105000,NULL,4),(13,'rekening edit',50000,NULL,NULL),(14,'rekening 14',10000,NULL,NULL),(15,'ovo 15 lama',NULL,NULL,NULL),(40,'akun 1',50000,NULL,23),(41,'sahid',3232,NULL,1),(44,'32432',2343234,NULL,1);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `customer` (
   `username` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cif`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'l','l','l','l','l'),(2,'a','a','a','a','a'),(3,'b','b','b','b','b'),(4,'choniyu','azwan','14/09/97','azwan','azwan'),(5,'q','q','q','q','q'),(6,'w','w','w','w','a'),(7,'Budi','Handuk','12/12/1996','budi','budi'),(17,'gusti first','gusti last','29-11-1954','gustiusername','gustipassword'),(22,'ang','ang','2019-04-01T17:00:00.000Z','ang@a','aaaaaaaa');
+INSERT INTO `customer` VALUES (1,'l','l','l','l','l'),(2,'a','a','a','a','a'),(3,'b','b','b','b','b'),(4,'choniyu','azwan','14/09/97','azwan','azwan'),(5,'q','q','q','q','q'),(6,'w','w','w','w','a'),(7,'Budi','Handuk','12/12/1996','budi','budi'),(17,'gusti first','gusti last','29-11-1954','gustiusername','gustipassword'),(22,'ang','ang','2019-04-01T17:00:00.000Z','ang@a','aaaaaaaa'),(23,'budi','handuk','2019-04-01T17:00:00.000Z','budi@gmail.com','budihanduk');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `transaction` (
   CONSTRAINT `FKa80kblc0ww9p9xjei8luheqlk` FOREIGN KEY (`account_debit`) REFERENCES `account` (`account_number`),
   CONSTRAINT `FKfyulcnb5oy8f5ow8avihkwfkh` FOREIGN KEY (`cif`) REFERENCES `customer` (`cif`),
   CONSTRAINT `FKnp6o51c24kj5jytqjcvj4lsbr` FOREIGN KEY (`account_debit`) REFERENCES `account` (`account_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,1,1,NULL,10000,NULL,1),(2,2,1,NULL,10000,NULL,1),(3,3,1,NULL,50000,NULL,2),(4,2,4,NULL,1000,NULL,1),(5,2,1,NULL,20,NULL,1),(6,3,1,NULL,50,NULL,1),(7,1,2,NULL,1000,NULL,1),(8,1,1,NULL,500,NULL,1),(9,1,1,NULL,500,NULL,1),(10,2,2,NULL,500,NULL,1),(11,3,1,NULL,500,NULL,1),(12,1,7,NULL,50000,NULL,4),(13,2,10,NULL,50000,NULL,4),(14,3,12,NULL,50000,NULL,4),(15,1,12,NULL,50000,NULL,4),(16,1,12,NULL,50000,NULL,4),(17,1,15,NULL,20000,NULL,7),(18,2,13,NULL,20000,NULL,7),(19,3,13,NULL,20000,NULL,7);
+INSERT INTO `transaction` VALUES (20,1,1,7,10000,NULL,1),(21,2,4,12,5000,NULL,1),(22,3,4,9,5000,NULL,1);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +189,7 @@ CREATE TABLE `wallet_account` (
 
 LOCK TABLES `wallet_account` WRITE;
 /*!40000 ALTER TABLE `wallet_account` DISABLE KEYS */;
-INSERT INTO `wallet_account` VALUES (2,1,2,1),(3,2,1,1),(4,4,7,4),(5,5,10,4),(7,5,9,4),(8,4,12,4),(11,6,13,7),(14,7,14,7),(15,1,5,1),(16,1,5,1);
+INSERT INTO `wallet_account` VALUES (2,1,2,1),(3,2,1,1),(4,4,7,4),(5,5,10,4),(7,5,9,4),(8,4,12,4),(11,6,13,7),(14,7,14,7);
 /*!40000 ALTER TABLE `wallet_account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -202,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-23 10:07:16
+-- Dump completed on 2019-04-25 10:27:31

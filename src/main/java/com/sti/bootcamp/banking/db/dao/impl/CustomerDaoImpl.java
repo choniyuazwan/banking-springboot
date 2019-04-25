@@ -22,11 +22,4 @@ public class CustomerDaoImpl implements CustomerDao {
         return em.find(CustomerEntity.class, id);
     }
 
-    @Override
-    public CustomerEntity Login(CustomerEntity customer) {
-        CustomerEntity customers;
-        customers = customerRepository.findByUsernameAndPassword(customer.getUsername(), customer.getPassword());
-
-        return null;
-    }
 }

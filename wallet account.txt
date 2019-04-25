@@ -1,0 +1,11 @@
+{
+    "wallet": {
+        "id": 1
+    },
+    "account": {
+        "accountNumber": 2
+    },
+    "customer": {
+        "cif": 1
+    }
+}
