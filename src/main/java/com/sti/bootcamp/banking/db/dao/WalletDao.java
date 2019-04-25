@@ -8,5 +8,5 @@ import java.util.List;
 public interface WalletDao {
     List<WalletEntity> getList(int cif);
     WalletEntity getById(int id);
-    WalletEntity save(WalletEntity account);
+    WalletEntity save(WalletEntity wallet);
 }
