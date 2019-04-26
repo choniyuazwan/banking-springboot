@@ -17,6 +17,7 @@ public class CustomerController {
     public static final String URL_REQUEST_CUSTOMER_BY_ID = "/customer/{id}";
     public static final String URL_REQUEST_CUSTOMER_BY_USERNAME_PASSWORD = "/customer/{username}/{password}";
     public static final String URL_REQUEST_CUSTOMER_LOGIN= "/customer/login";
+    public static final String URL_REQUEST_CUSTOMER_BY_USERNAME= "/customer/{username}";
 
     @Autowired
     private CustomerDao customerDao;
@@ -66,8 +67,17 @@ public class CustomerController {
     }
 
     @PostMapping(value = URL_REQUEST_CUSTOMER)
-    public CommonResponse<CustomerEntity> createCustomerEntity(@RequestBody CustomerEntity customer) {
+    public CommonResponse<CustomerEntity> createCustomerEntity(@RequestBody CustomerEntity customer) throws CustomException {
         CommonResponse<CustomerEntity> response = new CommonResponse<>();
+
+
+        CustomerEntity checkCustomer;
+        checkCustomer = customerRepository.findByUsername(customer.getUsername());
+
+        if (checkCustomer != null) {
+            throw new CustomException("404", "Email already exist");
+        }
+
         response.setData(customerRepository.save(customer));
         return response;
     }
@@ -83,6 +93,20 @@ public class CustomerController {
 
         CommonResponse<CustomerEntity> response = new CommonResponse<CustomerEntity>();
         response.setData(customers);
+        return response;
+    }
+
+    @PostMapping(value = URL_REQUEST_CUSTOMER_BY_USERNAME)
+    public CommonResponse<CustomerEntity> getCustomerByUsername(@RequestBody CustomerEntity customer) throws CustomException {
+        CustomerEntity checkCustomer;
+        checkCustomer = customerRepository.findByUsername(customer.getUsername());
+
+        if (checkCustomer != null) {
+            throw new CustomException("100", "Already Exists");
+        }
+
+        CommonResponse<CustomerEntity> response = new CommonResponse<CustomerEntity>();
+        response.setData(checkCustomer);
         return response;
     }
 }
