@@ -36,7 +36,8 @@ public class DefaultUserDetailsService implements UserDetailsService {
                 throw new CustomException("99", "Failed");
             }
 
-            return new User(customer.getUsername(), String.format("{noop}%s", customer.getPassword()), getAuthority());
+//            return new User(customer.getUsername(), String.format("{noop}%s", customer.getPassword()), getAuthority());
+            return new CustomUser(customer, getAuthority());
         }catch (CustomException e) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
