@@ -22,4 +22,9 @@ public class CustomerDaoImpl implements CustomerDao {
         return em.find(CustomerEntity.class, id);
     }
 
+//    @Override
+//    public CustomerEntity getByUsername(String username) {
+//        return em.find(CustomerEntity.class, username);
+//    }
+
 }

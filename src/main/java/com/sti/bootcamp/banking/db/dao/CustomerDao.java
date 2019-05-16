@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerDao {
     CustomerEntity getById(int id);
+
+//    CustomerEntity getByUsername(String username);
 }
