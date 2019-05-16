@@ -46,6 +46,35 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<changeLogFile>
+						/src/main/resources/db.changelog-master.xml
+					</changeLogFile>
+					<driver>com.mysql.cj.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost:3306/banking_springboot</url>
+					<username>root</username>
+					<password>password</password>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>update</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
 		</plugins>
 	</build>
 

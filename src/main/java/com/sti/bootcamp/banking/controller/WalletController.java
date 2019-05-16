@@ -66,11 +66,20 @@ public class WalletController {
     @DeleteMapping(URL_REQUEST_WALLET_BY_ID)
     public CommonResponse<WalletEntity> delete(@PathVariable(name = "id") String id) throws CustomException {
         CommonResponse<WalletEntity> response = new CommonResponse<WalletEntity>();
-        WalletEntity checkWallet = walletDao.getById(Integer.parseInt(id));
+        WalletEntity checkWallet;
+        try {
+            checkWallet = walletDao.getById(Integer.parseInt(id));
+        } catch (Exception e) {
+            throw new CustomException("500", "This record cannot be deleted because it used by other table");
+        }
         if(checkWallet==null) {
             throw new CustomException("404", "Not Found");
         }else{
-            response.setData(walletRepository.deleteById(Integer.parseInt(id)));
+            try {
+                response.setData(walletRepository.deleteById(Integer.parseInt(id)));
+            } catch (Exception e) {
+                throw new CustomException("500", "This record cannot be deleted because it used by other table");
+            }
         }
         return response;
     }

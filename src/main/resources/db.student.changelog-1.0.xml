@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="student.0.1-1" author="ca">
+        <createTable tableName="student">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet id="student.0.1-2" author="ca">-->
+        <!--<addColumn tableName="student">-->
+            <!--<column name="batch_id" type="INT">-->
+                <!--<constraints foreignKeyName="FK_student_batch" referencedTableName="bootcamp_batch"-->
+                             <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+        <!--</addColumn>-->
+    <!--</changeSet>-->
+
+    <changeSet author="ca" id="student.0.1-3">
+        <loadData catalogName="banking_springboot"
+                        encoding="UTF-8"
+                        file="src/main/resources/student.csv"
+                        quotchar="'"
+                        schemaName="public"
+                        separator=","
+                        tableName="student">
+            <!--<column name="id" type="numeric"/>-->
+            <!--<column name="first_name" type="string"/>-->
+            <!--<column name="last_name" type="string"/>-->
+            <!--<column name="email" type="string"/>-->
+            <!--<column name="phone" type="string"/>-->
+            <!--<column name="address" type="string"/>-->
+            <!--<column name="batch_id" type="numeric"/>-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

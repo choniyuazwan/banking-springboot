@@ -1,6 +1,8 @@
 package com.sti.bootcamp.banking.controller;
 
+import com.sti.bootcamp.banking.db.dao.AccountDao;
 import com.sti.bootcamp.banking.db.dao.WalletAccountDao;
+import com.sti.bootcamp.banking.db.model.AccountEntity;
 import com.sti.bootcamp.banking.db.model.WalletAccountEntity;
 import com.sti.bootcamp.banking.db.repository.WalletAccountRepository;
 import com.sti.bootcamp.banking.exception.CustomException;
@@ -18,6 +20,9 @@ public class WalletAccountController {
 
     @Autowired
     private WalletAccountDao walletAccountDao;
+
+    @Autowired
+    private AccountDao accountDao;
 
     @Autowired
     private WalletAccountRepository walletAccountRepository;
@@ -39,6 +44,18 @@ public class WalletAccountController {
         CommonResponse<WalletAccountEntity> response = new CommonResponse<>();
         response.setData(walletAccountDao.save(walletAccount));
         return response;
+
+//        WalletAccountEntity checkAccount = walletAccountDao.getById(walletAccount.getAccount().getAccountNumber());
+//        CommonResponse<WalletAccountEntity> response = new CommonResponse<>();
+//
+//        if(checkAccount!=null) {
+//            response.setResponseCode("99");
+//            response.setResponseMessage("Account already exist");
+//        }else{
+//            response.setData(walletAccountDao.save(walletAccount));
+//        }
+//
+//        return response;
     }
 
     @PutMapping(value = URL_REQUEST_WALLET_ACCOUNT)

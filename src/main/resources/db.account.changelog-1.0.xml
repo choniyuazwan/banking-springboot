@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="customer.0.1-1" author="kus">
+        <createTable tableName="test_account">
+            <column name="accountNumber" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="accountName" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="openDate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cif" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

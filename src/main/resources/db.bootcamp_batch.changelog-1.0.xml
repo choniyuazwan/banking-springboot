@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="bootcamp_batch.0.1-1" author="ca">
+        <createTable tableName="bootcamp_batch">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="finish_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ca" id="bootcamp_batch.0.1-3">
+        <loadUpdateData catalogName="banking_springboot"
+                        encoding="UTF-8"
+                        primaryKey="id"
+                        file="src/main/resources/bootcamp_batch.csv"
+                        quotchar="'"
+                        schemaName="public"
+                        separator=","
+                        tableName="bootcamp_batch">
+            <column name="id" type="numeric"/>
+            <column name="description" type="string"/>
+            <column name="start_date" type="string"/>
+            <column name="finish_date" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+</databaseChangeLog>

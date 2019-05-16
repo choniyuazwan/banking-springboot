@@ -8,6 +8,7 @@ public interface WalletAccountDao {
     List<WalletAccountEntity> getList(int cif);
 
     WalletAccountEntity getById(int id);
+//    WalletAccountEntity getByAccountNumber(int id);
 
     WalletAccountEntity save(WalletAccountEntity walletAccount);
     WalletAccountEntity delete(WalletAccountEntity walletAccount);

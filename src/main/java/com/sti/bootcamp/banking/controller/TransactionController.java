@@ -53,6 +53,14 @@ public class TransactionController {
                 throw new CustomException("404", "Not Found");
             }
 
+            if(checkAccountCredit.getAccountNumber()==checkAccountDebit.getAccountNumber()) {
+                throw new CustomException("88", "Cannot transfer to your own account");
+            }
+
+            if(checkAccountDebit.getBalance() < transaction.getAmount()) {
+                throw new CustomException("99", "Amount cannot be grather than balance");
+            }
+
             int newBalanceDebit = checkAccountDebit.getBalance() - transaction.getAmount();
             int newBalanceCredit = checkAccountCredit.getBalance() + transaction.getAmount();
 
@@ -63,6 +71,10 @@ public class TransactionController {
 
             response.setData(transactionDao.save(transaction));
         } else if(transaction.getTransactionType().getCode()==3) {
+            if(checkAccountDebit.getBalance() < transaction.getAmount()) {
+                throw new CustomException("99", "Amount cannot be grather than balance");
+            }
+
             int newBalanceDebit = checkAccountDebit.getBalance() - transaction.getAmount();
             checkAccountDebit.setBalance(newBalanceDebit);
             accountDao.save(checkAccountDebit);

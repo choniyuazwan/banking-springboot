@@ -1,8 +1,8 @@
 package com.sti.bootcamp.banking.controller;
 
 import com.sti.bootcamp.banking.db.dao.AccountDao;
-import com.sti.bootcamp.banking.db.model.AccountEntity;
-import com.sti.bootcamp.banking.db.model.WalletAccountEntity;
+import com.sti.bootcamp.banking.db.dao.TransactionDao;
+import com.sti.bootcamp.banking.db.model.*;
 import com.sti.bootcamp.banking.db.repository.AccountRepository;
 import com.sti.bootcamp.banking.db.repository.WalletAccountRepository;
 import com.sti.bootcamp.banking.exception.CustomException;
@@ -21,6 +21,9 @@ public class AccountController {
 
     @Autowired
     private AccountDao accountDao;
+
+    @Autowired
+    private TransactionDao transactionDao;
 
     @Autowired
     private AccountRepository accountRepository;
@@ -42,6 +45,26 @@ public class AccountController {
         CommonResponse<AccountEntity> response = new CommonResponse<>();
         response.setData(accountDao.save(account));
         return response;
+
+//        CommonResponse<AccountEntity> response = new CommonResponse<>();
+//        response.setData(accountDao.save(account));
+//
+//        TransactionEntity transaction = new TransactionEntity();
+//        TransactionTypeEntity transactionType = new TransactionTypeEntity();
+//        transactionType.setCode(1);
+//
+//        CustomerEntity customer = new CustomerEntity();
+//        customer.setCif(account.getCustomer().getCif());
+//
+//        transaction.setTransactionType(transactionType);
+//        transaction.setAccountDebit(account);
+//        transaction.setAmount(account.getBalance());
+//        transaction.setDate(account.getOpenDate());
+//        transaction.setCustomer(customer);
+//
+//
+//        transactionDao.save(transaction);
+//        return response;
     }
 
     @PatchMapping(value=URL_REQUEST_ACCOUNT)
@@ -68,12 +91,25 @@ public class AccountController {
 
     @DeleteMapping(URL_REQUEST_ACCOUNT_BY_ID)
     public CommonResponse<AccountEntity> delete(@PathVariable(name = "id") String id) throws CustomException {
+//        CommonResponse<AccountEntity> response = new CommonResponse<AccountEntity>();
+//        AccountEntity checkAccount = accountDao.getById(Integer.parseInt(id));
+//        if(checkAccount==null) {
+//            throw new CustomException("404", "Not Found");
+//        }else{
+//            response.setData(accountRepository.deleteById(Integer.parseInt(id)));
+//        }
+//        return response;
+
         CommonResponse<AccountEntity> response = new CommonResponse<AccountEntity>();
         AccountEntity checkAccount = accountDao.getById(Integer.parseInt(id));
         if(checkAccount==null) {
             throw new CustomException("404", "Not Found");
         }else{
-            response.setData(accountRepository.deleteById(Integer.parseInt(id)));
+            try {
+                response.setData(accountRepository.deleteById(Integer.parseInt(id)));
+            } catch (Exception e) {
+                throw new CustomException("500", "This record cannot be deleted because it used by other table");
+            }
         }
         return response;
     }
