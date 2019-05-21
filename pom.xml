@@ -16,10 +16,10 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<mysql.version>5.1.39</mysql.version>
-		<liquibase.version>3.5.1</liquibase.version>
+		<!--<mysql.version>5.1.39</mysql.version>-->
+		<!--<liquibase.version>3.5.1</liquibase.version>-->
 		<sonar.version>3.6.0.1398</sonar.version>
-		<h2.version>1.4.194</h2.version>
+		<!--<h2.version>1.4.194</h2.version>-->
 	</properties>
 
 	<dependencies>
