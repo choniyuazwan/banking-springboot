@@ -2,7 +2,6 @@ package com.sti.bootcamp.banking.controller;
 
 import com.sti.bootcamp.banking.db.dao.AccountDao;
 import com.sti.bootcamp.banking.db.dao.WalletAccountDao;
-import com.sti.bootcamp.banking.db.model.AccountEntity;
 import com.sti.bootcamp.banking.db.model.WalletAccountEntity;
 import com.sti.bootcamp.banking.db.repository.WalletAccountRepository;
 import com.sti.bootcamp.banking.exception.CustomException;

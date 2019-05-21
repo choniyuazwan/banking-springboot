@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.sti.bootcamp.banking.controller.AccountController.URL_REQUEST_ACCOUNT;
-
 @RestController
 public class TransactionController {
     public static final String URL_REQUEST_TRANSACTION = "/transaction";

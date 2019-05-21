@@ -4,11 +4,9 @@ import com.sti.bootcamp.banking.db.dao.AccountDao;
 import com.sti.bootcamp.banking.db.dao.TransactionDao;
 import com.sti.bootcamp.banking.db.model.*;
 import com.sti.bootcamp.banking.db.repository.AccountRepository;
-import com.sti.bootcamp.banking.db.repository.WalletAccountRepository;
 import com.sti.bootcamp.banking.exception.CustomException;
 import com.sti.bootcamp.banking.model.dto.CommonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
